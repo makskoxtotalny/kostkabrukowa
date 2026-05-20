@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Nazwa Twojej Firmy / Twoje Usługi]</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        :root {
+            --bg-color: #0a0f1d;
+            --card-bg: #161f38;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 90px; /* Przestrzeń na dolny pasek */
+        }
+
+        header {
+            padding: 50px 20px 30px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.2) 0%, rgba(10, 15, 29, 0) 100%);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: var(--accent-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Kontener i Sekcje (Karty) */
+        .container {
+            padding: 0 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Sekcja O Mnie z miejscem na zdjęcie */
+        .profile-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-blue);
+            object-fit: cover;
+            margin-bottom: 12px;
+            background-color: #243156; /* Kolor zastępczy zanim dodasz zdjęcie */
+        }
+
+        .badge-container {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .badge {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-alt {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+        }
+
+        /* Nowoczesna lista zalet */
+        .features-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .features-list li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        .promo-banner {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            border: none;
+            text-align: center;
+        }
+
+        .promo-banner h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .promo-banner p {
+            color: #93c5fd;
+            font-size: 0.9rem;
+        }
+
+        .gallery-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .gallery-card-title {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .img-box {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .img-label {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(10, 15, 29, 0.75);
+            backdrop-filter: blur(4px);
+            color: #fff;
+            padding: 3px 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(22, 31, 56, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 16px 20px;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 9999;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 14px;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            color: white;
+            transition: transform 0.1s;
+        }
+
+        .nav-btn-call {
+            background-color: var(--accent-green);
+        }
+
+        .nav-btn-sms {
+            background-color: var(--accent-blue);
+        }
+
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>[Nazwa Twojej Firmy]</h1>
+        <p>Lokalne Usługi z Sąsiedztwa</p>
+    </header>
+
+    <div class="container">
+
+        <section>
+            <div class="profile-wrapper">
+                <img class="profile-avatar" src="profilowe.jpg" alt="Twoje zdjęcie (podmień plik)">
+                
+                <div class="badge-container">
+                    <span class="badge">Licealista z sąsiedztwa</span>
+                    <span class="badge badge-alt">Jestem po maturze 🎓</span>
+                </div>
+                
+                <p style="font-size: 1.05rem;">Cześć! Nazywam się <strong>Maksymilian</strong>.</p>
+            </div>
+            
+            <p style="color: var(--text-muted); text-align: center;">
+                Właśnie zdałem maturę i mam <strong>bardzo elastyczny grafik<strong> – dostosuję się do każdej godziny! Ciężko pracuję i zbieram fundusze na zbliżające się wakacje, dlatego do każdego zlecenia podchodzę na 100%.
+            </p>
+
+            <ul class="features-list">
+                <li>Działam błyskawicznie – mieszkam tuż obok.</li>
+                <li>Konkurencyjne stawki i młodzieńcza energia.</li>
+                <li>Zawsze upewniam się, że klient jest w pełni zadowolony.</li>
+            </ul>
+        </section>
+
+        <section class="promo-banner">
+            <h3>Darmowa wycena i dojazd 🚗</h3>
+            <p>Napisz lub zadzwoń. Mogę zawsze podjechać na miejsce, zerknąć na zadanie i bezpłatnie wycenić pracę!</p>
+        </section>
+
+        <section>
+            <h2>W czym mogę pomóc?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 10px;">Oferuję pomoc w codziennych obowiązkach ogrodowych, domowych czy technicznych:</p>
+            <ul class="features-list" style="margin-top: 0;">
+                <li>🔵Cisnieniowe mycie kostki brukowej i jej konserwacja</li>
+                <li>🔵Cisnieniowe mycie płytek i ich konserwacja</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Moje Realizacje</h2>
+            <p style="color: var(--text-muted); margin-bottom: 16px; font-size: 0.9rem;">Efekty moich prac przed i po wykonaniu usługi:</p>
+
+            <div class="gallery-card">
+                <div class="gallery-card-title">Przykład #1: [Np. Koszenie zaniedbanego ogrodu]</div>
+                <div class="comparison-grid">
+                    <div class="img-box">
+                        <img src="przed1.jpg" alt="Przed">
+                        <div class="img-label">Przed</div>
+                    </div>
+                    <div class="img-box">
+                        <img src="po1.jpg" alt="Po">
+                        <div class="img-label" style="color: #34d399;">Po</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-card-title">Przykład #2: [Np. Mycie tarasu / auta]</div>
+                <div class="comparison-grid">
+                    <div class="img-box">
+                        <img src="przed2.jpg" alt="Przed">
+                        <div class="img-label">Przed</div>
+                    </div>
+                    <div class="img-box">
+                        <img src="po2.jpg" alt="Po">
+                        <div class="img-label" style="color: #34d399;">Po</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="text-align: center; margin-bottom: 40px;">
+            <h2>Zadwoń lub napisz</h2>
+            <p style="color: var(--text-muted); margin-bottom: 10px;">Masz pytania? Chcesz, żebym wpadł wycenić pracę?</p>
+            <p style="font-size: 1.2rem; font-weight: 700; color: var(--accent-blue);">+48 883 767 784</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">Lokalizacja: Sulejówek i okolice</p>
+        </section>
+
+    </div>
+
+    <div class="bottom-nav">
+        <a href="tel:+48883767784" class="nav-btn nav-btn-call">
+            📞 Zadzwoń teraz
+        </a>
+        <a href="sms:+48883767784?body=Dzien%20dobry,%20chcialbym%20zapytac%20o%20darmowa%20wycene..." class="nav-btn nav-btn-sms">
+            💬 Napisz SMS
+        </a>
+    </div>
+
+</body>
+</html>
