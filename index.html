@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kompleksowe mycie kostki przed domem - Maksymilian</title>
     <style>
-        /* Reset i podstawowe style mobilne */
+        /* Reset i podstawowe style mobilne w wersji Dark Mode */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,36 +15,42 @@
 
         :root {
             --primary-color: #007bff;
-            --text-color: #333;
-            --bg-light: #f8f9fa;
+            --accent-neon: #00f0ff;
+            --text-color: #f8f9fa;
+            --bg-dark: #121212;
+            --card-dark: #1e1e1e;
         }
 
         body {
-            background-color: var(--bg-light);
+            background-color: var(--bg-dark);
             color: var(--text-color);
             line-height: 1.6;
             padding-bottom: 80px; /* Miejsce na przyklejone menu dolne */
         }
 
-        /* Nagłówek */
+        /* Nagłówek w mrocznym, nowoczesnym stylu */
         header {
-            background: linear-gradient(135deg, #007bff, #0056b3);
+            background: linear-gradient(135deg, #1e1e1e, #0a0a0a);
             color: white;
             text-align: center;
             padding: 40px 20px;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border-bottom: 2px solid var(--primary-color);
         }
 
         header h1 {
             font-size: 1.8rem;
             margin-bottom: 10px;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         header p {
             font-size: 1.1rem;
-            opacity: 0.9;
+            color: var(--accent-neon);
+            font-weight: 500;
         }
 
         /* Sekcje */
@@ -55,18 +61,19 @@
         }
 
         section {
-            background: white;
+            background: var(--card-dark);
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 1px solid #2a2a2a;
         }
 
         h2 {
-            color: var(--primary-color);
+            color: var(--accent-neon);
             font-size: 1.4rem;
             margin-bottom: 15px;
-            border-bottom: 2px solid var(--bg-light);
+            border-bottom: 2px solid #2a2a2a;
             padding-bottom: 5px;
         }
 
@@ -75,35 +82,38 @@
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .about-badge {
-            background: #e1f0ff;
-            color: #0056b3;
+            background: rgba(0, 123, 255, 0.2);
+            color: #79b8ff;
             display: inline-block;
             padding: 5px 12px;
             border-radius: 20px;
             font-weight: bold;
             font-size: 0.85rem;
+            border: 1px solid rgba(0, 123, 255, 0.4);
         }
 
         .exp-badge {
-            background: #e6f4ea;
-            color: #137333;
+            background: rgba(40, 167, 69, 0.2);
+            color: #81c995;
             display: inline-block;
             padding: 5px 12px;
             border-radius: 20px;
             font-weight: bold;
             font-size: 0.85rem;
+            border: 1px solid rgba(40, 167, 69, 0.4);
         }
 
         /* Galeria Przed / Po */
         .gallery-item {
             margin-bottom: 20px;
-            background: var(--bg-light);
+            background: #252525;
             border-radius: 10px;
-            padding: 10px;
+            padding: 12px;
+            border: 1px solid #333;
         }
 
         .gallery-title {
@@ -111,6 +121,7 @@
             text-align: center;
             margin-bottom: 10px;
             font-size: 0.95rem;
+            color: #ddd;
         }
 
         .grid-images {
@@ -136,27 +147,30 @@
             position: absolute;
             bottom: 5px;
             left: 5px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.75);
             color: white;
             padding: 2px 8px;
             font-size: 0.75rem;
             border-radius: 4px;
             text-transform: uppercase;
+            font-weight: bold;
+            border: 1px solid #444;
         }
 
-        /* Przyciski szybkiego kontaktu na dole (Tylko Mobile) */
+        /* Przyciski szybkiego kontaktu na dole */
         .action-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: white;
+            background: #1a1a1a;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
             padding: 12px 20px;
-            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.5);
             z-index: 1000;
+            border-top: 1px solid #2a2a2a;
         }
 
         .btn {
@@ -173,11 +187,11 @@
         }
 
         .btn-call {
-            background-color: #28a745;
+            background-color: #218838;
         }
 
         .btn-sms {
-            background-color: #007bff;
+            background-color: #0069d9;
         }
 
         .btn:active {
@@ -185,104 +199,109 @@
             transform: scale(0.98);
         }
 
-        /* Kontakt info w tekście */
-        .contact-info p {
-            margin-bottom: 8px;
-            font-size: 1.05rem;
-        }
-
+        /* Listy i tekst */
         ul {
             padding-left: 20px;
         }
 
         li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        a {
+            color: var(--accent-neon);
+            text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Kompleksowe mycie kostki przed domem</h1>
-        <p>Szybko, solidnie i po sąsiedzku!</p>
+        <h1>🧼 Kompleksowe mycie kostki przed domem</h1>
+        <p>⚡ Szybko, solidnie i po sąsiedzku! ⚡</p>
     </header>
 
     <div class="container">
 
         <section id="o-mnie">
             <div class="badge-container">
-                <span class="about-badge">Licealista z sąsiedztwa</span>
-                <span class="exp-badge">3 lata doświadczenia</span>
+                <span class="about-badge">🎒 Licealista z sąsiedztwa</span>
+                <span class="exp-badge">⭐ 3 lata doświadczenia</span>
             </div>
-            <h2>Poznajmy się</h2>
-            <p>Cześć! Nazywam się <strong>Maksymilian</strong>. Jestem uczniem lokalnego liceum, a usługami porządkowymi i myciem ciśnieniowym w okolicy zajmuję się już od 3 lat. Dlaczego warto mi zaufać?</p>
+            <h2>👋 Poznajmy się</h2>
+            <p>Cześć! Nazywam się <strong>Maksymilian</strong>. Jestem uczniem lokalnego liceum, a usługami profesjonalnego mycia ciśnieniowego w naszej okolicy zajmuję się z powodzeniem już od 3 lat. Dlaczego warto mi zaufać?</p>
             <br>
             <ul>
-                <li><strong>Profesjonalny sprzęt:</strong> Pracuję na niezawodnej, profesjonalnej myjce ciśnieniowej <strong>Kärcher HD 5/15 C Plus</strong>. Zapewnia ona ogromną skuteczność i ciśnienie, z którym zwykłe domowe marketowe myjki nie mają szans.</li>
-                <li><strong>Doświadczenie:</strong> Przez ostatnie 3 lata zrealizowałem wiele zleceń dla zadowolonych sąsiadów – doskonale wiem, jak bezpiecznie i dokładnie doczyścić kostkę oraz inne powierzchnie.</li>
-                <li><strong>Blisko Ciebie:</strong> Mieszkam po sąsiedzku, dzięki czemu jestem elastyczny, szybki w działaniu, a Ty wspierasz lokalnego przedsiębiorcę!</li>
-                <li><strong>Uczciwe ceny:</strong> Jako uczeń zbieram na własne wydatki oraz dalszy rozwój sprzętu, dlatego moje stawki są bardzo atrakcyjne i konkurencyjne.</li>
+                <li><strong>🚀 Profesjonalny sprzęt:</strong> Pracuję na mocnej, niezawodnej maszynie <strong>Kärcher HD 5/15 C Plus</strong>. Zapewnia ona potężne ciśnienie, z którym zwykłe domowe, marketowe myjki nie mają żadnych szans!</li>
+                <li><strong>💪 Doświadczenie:</strong> Przez ostatnie 3 lata odmieniłem wygląd wielu podjazdów w sąsiedztwie – doskonale wiem, jak bezpiecznie i dokładnie doczyścić każdy rodzaj kostki.</li>
+                <li><strong>🏡 Blisko Ciebie:</strong> Mieszkam po sąsiedzku. Jestem bardzo elastyczny, szybki w działaniu, a Ty przy okazji wspierasz lokalnego, młodego przedsiębiorcę!</li>
+                <li><strong>💰 Uczciwe ceny:</strong> Jako uczeń zbieram na własne wydatki oraz rozbudowę profesjonalnego sprzętu, dlatego gwarantuję bardzo konkurencyjne stawki.</li>
             </ul>
         </section>
 
         <section id="uslugi">
-            <h2>W czym mogę pomóc?</h2>
-            <p>Wykorzystując moc profesjonalnego Kärchera oraz zdobyte doświadczenie, oferuję:</p>
+            <h2>🛠️ W czym mogę pomóc?</h2>
+            <p>Wykorzystując pełną moc Kärchera oraz moje doświadczenie, oferuję:</p>
             <br>
             <ul>
-                <li>Kompleksowe mycie kostki brukowej i granitowej</li>
-                <li>Czyszczenie podjazdów, chodników oraz ścieżek ogrodowych</li>
-                <li>Usuwanie mchu, porostów, chwastów oraz uporczywych zabrudzeń z przerw w kostce</li>
-                <li>Mycie tarasów, ogrodzeń, murków oraz elewacji</li>
-                <li>Czyszczenie mebli ogrodowych oraz aut po sezonie</li>
+                <li>✨ Kompleksowe mycie kostki brukowej i granitowej</li>
+                <li>🚗 Czyszczenie zarośniętych podjazdów, chodników oraz ścieżek</li>
+                <li>🌿 Usuwanie mchu, porostów, chwastów i błota z przerw między kostkami</li>
+                <li>🏡 Odświeżanie tarasów, ogrodzeń, murków</li>
+                <li>🚲 Mycie mebli ogrodowych, przyczepek po sezonie</li>
             </ul>
         </section>
 
         <section id="galeria">
-            <h2>Moje realizacje (Przed / Po)</h2>
-            <p style="margin-bottom: 15px;">Zobacz niesamowite efekty mojej pracy z użyciem Kärchera:</p>
+            <h2>📸 Efekty pracy (Przed / Po)</h2>
+            <p style="margin-bottom: 15px; color: #bbb;">Zobacz na własne oczy, jak profesjonalny sprzęt radzi sobie z brudem:</p>
 
             <div class="gallery-item">
-                <div class="gallery-title">Realizacja #1 - Mycie kostki brukowej</div>
+                <div class="gallery-title">💎 Realizacja #1 - Kostka brukowa</div>
                 <div class="grid-images">
                     <div class="img-container">
-                        <img src="przed1.jpg" alt="Przed">
-                        <div class="label">Przed</div>
+                        <img src="przed3.JPG" alt="Przed">
+                        <div class="label" style="background: #dc3545;">Przed 🛑</div>
                     </div>
                     <div class="img-container">
-                        <img src="po1.jpg" alt="Po">
-                        <div class="label">Po</div>
+                        <img src="po3.jpeg" alt="Po">
+                        <div class="label" style="background: #28a745;">Po ✅</div>
                     </div>
                 </div>
             </div>
 
             <div class="gallery-item">
-                <div class="gallery-title">Realizacja #2 - Czyszczenie podjazdu</div>
+                <div class="gallery-title">💎 Realizacja #2 - Podjazd przed domem</div>
                 <div class="grid-images">
                     <div class="img-container">
-                        <img src="przed2.jpg" alt="Przed">
-                        <div class="label">Przed</div>
+                        <img src="przed1.jpeg" alt="Przed">
+                        <div class="label" style="background: #dc3545;">Przed 🛑</div>
                     </div>
                     <div class="img-container">
-                        <img src="po2.jpg" alt="Po">
-                        <div class="label">Po</div>
+                        <img src="po1.jpeg" alt="Po">
+                        <div class="label" style="background: #28a745;">Po ✅</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="kontakt" class="contact-info">
-            <h2>Kontakt</h2>
-            <p><strong>Wykonawca:</strong> Maksymilian</p>
-            <p><strong>Telefon:</strong> <a href="tel:+48883767784" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">+48 883 767 784</a></p>
-            <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">Działam na terenie Twojej okolicy i sąsiednich miejscowości. Zadzwoń, a przyjadę na bezpłatną wycenę!</p>
+        <section id="kontakt">
+            <h2>📞 Szybki kontakt</h2>
+            <p style="font-size: 1.05rem;"><strong>Wykonawca:</strong> Maksymilian</p>
+            <p style="font-size: 1.05rem; margin-top: 5px;"><strong>Telefon:</strong> <a href="tel:+48883767784">+48 883 767 784</a></p>
+            <p style="margin-top: 15px; font-size: 0.9rem; color: #aaa;">📍 Działam na terenie Twojej okolicy i sąsiednich miejscowości. Napisz lub zadzwoń – chętnie wpadnę na darmową i niezobowiązującą wycenę!</p>
         </section>
 
     </div>
 
     <div class="action-bar">
         <a href="tel:+48883767784" class="btn btn-call">
-            📞 Zadzwoń
+            📞 Zadzwoń teraz
         </a>
         <a href="sms:+48883767784?body=Dzien%20dobry,%20jestem%20zainteresowany%20usluga%20mycia%20kostki..." class="btn btn-sms">
             💬 Napisz SMS
